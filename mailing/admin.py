@@ -14,7 +14,7 @@ class MessageAdmin(admin.ModelAdmin):
 @admin.register(Mailing)
 class MailingAdmin(admin.ModelAdmin):
     list_display = ('id', 'start_time', 'end_time', 'status', 'message')
-    filter_horizontal = ('clients',)
+    filter_horizontal = ('recipients',)
 
 @admin.register(MailTry)
 class MailTryAdmin(admin.ModelAdmin):

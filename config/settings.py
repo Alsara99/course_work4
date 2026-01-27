@@ -47,7 +47,7 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
 ]
 
-ROOT_URLCONF = 'mailing_service.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
@@ -67,7 +67,7 @@ TEMPLATES = [
 
 ACCOUNT_TEMPLATE_EXTENSION = 'html'
 
-WSGI_APPLICATION = 'mailing_service.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 load_dotenv()
