@@ -31,7 +31,7 @@ class RecipientListView(LoginRequiredMixin, ListView):
 class RecipientCreateView(LoginRequiredMixin, CreateView):
     model = Recipient
     fields = ['email', 'full_name', 'comment']
-    success_url = '/clients/'
+    success_url = '/recipients/'
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
@@ -41,12 +41,12 @@ class RecipientUpdateView(UpdateView):
     model = Recipient
     template_name = 'mailing/client_form.html'
     fields = ['email', 'full_name', 'comment']
-    success_url = reverse_lazy('client_list')
+    success_url = reverse_lazy('recipient_list')
 
 class RecipientDeleteView(DeleteView):
     model = Recipient
     template_name = 'mailing/client_confirm_delete.html'
-    success_url = reverse_lazy('client_list')
+    success_url = reverse_lazy('recipient_list')
 
 class MessageListView(LoginRequiredMixin, ListView):
     model = Message
