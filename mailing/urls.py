@@ -1,6 +1,8 @@
 from django.urls import path
 from .views import *
 
+app_name = "mailing"
+
 urlpatterns = [
     path('', index, name='index'),
     path('recipients/', RecipientListView.as_view(), name='recipient_list'),
