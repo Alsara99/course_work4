@@ -41,12 +41,12 @@ class RecipientUpdateView(UpdateView):
     model = Recipient
     template_name = 'mailing/client_form.html'
     fields = ['email', 'full_name', 'comment']
-    success_url = reverse_lazy('recipient_list')
+    success_url = reverse_lazy('mailing:recipient_list')
 
 class RecipientDeleteView(DeleteView):
     model = Recipient
     template_name = 'mailing/client_confirm_delete.html'
-    success_url = reverse_lazy('recipient_list')
+    success_url = reverse_lazy('mailing:recipient_list')
 
 class MessageListView(LoginRequiredMixin, ListView):
     model = Message
@@ -67,12 +67,12 @@ class MessageUpdateView(UpdateView):
     model = Message
     template_name = 'mailing/message_form.html'
     fields = ['subject', 'body']
-    success_url = reverse_lazy('message_list')
+    success_url = reverse_lazy('mailing:message_list')
 
 class MessageDeleteView(DeleteView):
     model = Message
     template_name = 'mailing/message_confirm_delete.html'
-    success_url = reverse_lazy('message_list')
+    success_url = reverse_lazy('mailing:message_list')
 
 @method_decorator(cache_page(60 * 15), name='dispatch')
 class MailingListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
@@ -104,12 +104,12 @@ class MailingUpdateView(UpdateView):
     model = Mailing
     form_class = MailingForm
     template_name = 'mailing/mailing_form.html'
-    success_url = reverse_lazy('mailing_list')
+    success_url = reverse_lazy('mailing:mailing_list')
 
 class MailingDeleteView(DeleteView):
     model = Mailing
     template_name = 'mailing/mailing_confirm_delete.html'
-    success_url = reverse_lazy('mailing_list')
+    success_url = reverse_lazy('mailing:mailing_list')
 
 def index(request):
     total_mailings = Mailing.objects.count()
@@ -143,4 +143,4 @@ class BlockUserView(UserPassesTestMixin, View):
         user.is_active = False
         user.save()
         messages.success(request, f'Пользователь {user.username} заблокирован.')
-        return redirect('user_list')
+        return redirect('users:user_list')

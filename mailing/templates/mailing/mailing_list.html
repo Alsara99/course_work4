@@ -13,9 +13,9 @@
             </div>
             <div>
                 {% if user == mailing.owner or perms.mailing.can_view_all_mailings %}
-                    <a href="{% url 'mailing_update' mailing.pk %}" class="btn btn-sm btn-warning">Редактировать</a>
-                    <a href="{% url 'mailing_delete' mailing.pk %}" class="btn btn-sm btn-danger">Удалить</a>
-                    <form method="post" action="{% url 'send_mailing' mailing.pk %}" style="display: inline;">
+                    <a href="{% url 'mailing:mailing_update' mailing.pk %}" class="btn btn-sm btn-warning">Редактировать</a>
+                    <a href="{% url 'mailing:mailing_delete' mailing.pk %}" class="btn btn-sm btn-danger">Удалить</a>
+                    <form method="post" action="{% url 'mailing:send_mailing' mailing.pk %}" style="display: inline;">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-sm btn-success">Отправить</button>
                     </form>

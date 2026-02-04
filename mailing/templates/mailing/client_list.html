@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container mt-4">
     <h1>Список клиентов</h1>
-    <a href="{% url 'recipient_create' %}" class="btn btn-primary mb-3">Добавить клиента</a>
+    <a href="{% url 'mailing:recipient_create' %}" class="btn btn-primary mb-3">Добавить клиента</a>
 
     <ul class="list-group">
         {% for recipient in object_list %}
@@ -12,8 +12,8 @@
                 {{ recipient.email }} ({{ recipient.full_name }})
             </div>
             <div>
-                <a href="{% url 'recipient_update' recipient.pk %}" class="btn btn-sm btn-warning">Редактировать</a>
-                <a href="{% url 'recipient_delete' recipient.pk %}" class="btn btn-sm btn-danger">Удалить</a>
+                <a href="{% url 'mailing:recipient_update' recipient.pk %}" class="btn btn-sm btn-warning">Редактировать</a>
+                <a href="{% url 'mailing:recipient_delete' recipient.pk %}" class="btn btn-sm btn-danger">Удалить</a>
             </div>
         </li>
         {% empty %}
