@@ -29,4 +29,4 @@ class MailingForm(forms.ModelForm):
         user = kwargs.pop('user', None)
         super(MailingForm, self).__init__(*args, **kwargs)
         if user and not user.groups.filter(name='Managers').exists():
-            self.fields['clients'].queryset = Recipient.objects.filter(owner=user)
+            self.fields['recipients'].queryset = Recipient.objects.filter(owner=user)

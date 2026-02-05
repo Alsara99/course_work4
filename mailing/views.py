@@ -24,12 +24,14 @@ def send_mailing_view(request, pk):
 @method_decorator(cache_page(60 * 15), name='dispatch')
 class RecipientListView(LoginRequiredMixin, ListView):
     model = Recipient
+    template_name = 'mailing/client_list.html'
 
     def get_queryset(self):
         return Recipient.objects.filter(owner=self.request.user)
 
 class RecipientCreateView(LoginRequiredMixin, CreateView):
     model = Recipient
+    template_name = 'mailing/client_form.html'
     fields = ['email', 'full_name', 'comment']
     success_url = '/recipients/'
 
@@ -66,7 +68,7 @@ class MessageCreateView(LoginRequiredMixin, CreateView):
 class MessageUpdateView(UpdateView):
     model = Message
     template_name = 'mailing/message_form.html'
-    fields = ['subject', 'body']
+    fields = ['title', 'body']
     success_url = reverse_lazy('mailing:message_list')
 
 class MessageDeleteView(DeleteView):

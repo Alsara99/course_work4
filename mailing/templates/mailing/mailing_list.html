@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container mt-4">
     <h1>Список рассылок</h1>
-    <a href="{% url 'mailing_create' %}" class="btn btn-primary mb-3">Добавить рассылку</a>
+    <a href="{% url 'mailing:mailing_create' %}" class="btn btn-primary mb-3">Добавить рассылку</a>
 
     <ul class="list-group">
         {% for mailing in object_list %}
