@@ -2,7 +2,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 def send_mailing(mailing):
-    recipients = mailing.clients.all()
+    recipients = mailing.recipients.all()
     for recipient in recipients:
         send_mail(
             mailing.message.title,

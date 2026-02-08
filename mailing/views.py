@@ -19,7 +19,7 @@ from .services import send_mailing
 def send_mailing_view(request, pk):
     mailing = get_object_or_404(Mailing, pk=pk)
     send_mailing(mailing)
-    return redirect('mailing_list')
+    return redirect('mailing:mailing_list')
 
 @method_decorator(cache_page(60 * 15), name='dispatch')
 class RecipientListView(LoginRequiredMixin, ListView):
